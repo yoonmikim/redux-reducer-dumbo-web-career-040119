@@ -1,36 +1,3 @@
-// export function manageFriends(state = {
-//   friends: [],
-// }, action) {
-//   switch(action.type) {
-
-//     case "ADD_FRIEND":
-//       return (
-//         {...state,
-//             friends: [
-//               ...state.friends,
-//               action.friend
-//             ]
-//         }
-//     )
-
-//     case "REMOVE_FRIEND":
-
-//       return (
-//         {...state,
-//             friends: [
-//               ...state.friends.filter(friend => friend.id !== action.id)
-//             ]
-//         }
-//       )
-
-//     default:
-//       return state;
-
-//   }
-// };
-
-
-
 export function manageFriends(state = {
   friends: [],
 }, action) {
@@ -47,12 +14,11 @@ export function manageFriends(state = {
     )
 
     case "REMOVE_FRIEND":
-      const removalIndex = state.friends.findIndex(friend => friend.id === action.id);
+
       return (
         {...state,
             friends: [
-              ...state.friends.slice(0, removalIndex),
-              ...state.friends.slice(removalIndex + 1)
+              ...state.friends.filter(friend => friend.id !== action.id)
             ]
         }
       )
@@ -62,3 +28,37 @@ export function manageFriends(state = {
 
   }
 };
+
+
+
+// export function manageFriends(state = {
+//   friends: [],
+// }, action) {
+//   switch(action.type) {
+
+//     case "ADD_FRIEND":
+//       return (
+//         {...state,
+//             friends: [
+//               ...state.friends,
+//               action.friend
+//             ]
+//         }
+//     )
+
+//     case "REMOVE_FRIEND":
+//       const removalIndex = state.friends.findIndex(friend => friend.id === action.id);
+//       return (
+//         {...state,
+//             friends: [
+//               ...state.friends.slice(0, removalIndex),
+//               ...state.friends.slice(removalIndex + 1)
+//             ]
+//         }
+//       )
+
+//     default:
+//       return state;
+
+//   }
+// };
